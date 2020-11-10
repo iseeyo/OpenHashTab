@@ -15,6 +15,8 @@
 //    along with OpenHashTab.  If not, see <https://www.gnu.org/licenses/>.
 #pragma once
 
+// Beware: Most of these macros and include ordering are figured out via trying until it compiles.
+
 #ifndef STRICT
 #define STRICT
 #endif
@@ -23,8 +25,14 @@
 
 #include "targetver.h"
 
+#define PHNT_VERSION PHNT_WIN7
+
 #define ISOLATION_AWARE_ENABLED 1
 #define SIDEBYSIDE_COMMONCONTROLS 1
+
+#include <ntstatus.h>
+
+#define WIN32_NO_STATUS
 
 // ATL
 #define _ATL_APARTMENT_THREADED
@@ -36,6 +44,10 @@
 #include <atlbase.h>
 #include <atlcom.h>
 #include <atlctl.h>
+
+// PHNT
+#include <phnt_windows.h>
+#include <phnt.h>
 
 // Windows
 #include <Windows.h>
